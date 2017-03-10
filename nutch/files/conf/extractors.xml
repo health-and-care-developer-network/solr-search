@@ -1,0 +1,70 @@
+<config xmlns="http://bayan.ir" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://bayan.ir https://raw.githubusercontent.com/BayanGroup/nutch-custom-search/master/zal-extractor-core/src/main/resources/extractors.xsd">
+    <fields>
+        <field name="post_title" />
+        <field name="post_content" />
+        <field name="solr_id" />
+        <field name="ID" />
+        <field name="permalink" />
+        <field name="post_type" />
+        <field name="categories" />
+        <field name="categories_str" />
+        <field name="categories_slug_str" />
+    </fields>
+    <documents>
+        <document url="^http://localhost:8080/.*" engine="css">
+            <extract-to field="post_title">
+                <text>
+                    <expr value="h2.resourceType" />
+                </text>
+            </extract-to>
+            <extract-to field="post_content">
+                <text>
+                    <expr value="li#description" />
+                </text>
+            </extract-to>
+            <extract-to field="solr_id">
+                <url/>
+            </extract-to>
+            <extract-to field="permalink">
+                <url/>
+            </extract-to>
+            <extract-to field="post_type">
+		<constant value="fhir" />
+            </extract-to>
+            <extract-to field="categories">
+		<constant value="FHIR Reference Server" />
+            </extract-to>
+            <extract-to field="categories_str">
+		<constant value="FHIR Reference Server" />
+            </extract-to>
+            <extract-to field="categories_slug_str">
+		<constant value="fhir" />
+            </extract-to>
+        </document>
+    </documents>
+</config>
+
+
+<!--
+
+
+        <field name="_version_" type="long" indexed="true" stored="true" multiValued="false"/>	
+      <field name="solr_id" type="string" indexed="true" stored="true" required="true" /> 
+      <field name="ID" type="string" indexed="true" stored="true" required="true" />
+        <field name="post_author" type="string" indexed="true" stored="true"/>
+        <field name="post_name" type="string" indexed="true" stored="true"/>  
+        <field name="post_type" type="string" indexed="true" stored="true"/>
+        <field name="post_title" type="text_lws" indexed="true" stored="true"/>
+        <field name="post_date" type="date" indexed="true" stored="true"/>
+        <field name="post_date_gmt" type="date" indexed="true" stored="true"/>
+        <field name="post_content" type="text" indexed="true" stored="true"/>
+
+
+"categories":["Interoperability and Integration^^NHS Interoperability Framework^^"],
+        "categories_str":["NHS Interoperability Framework"],
+        "categories_slug_str":["nhs-interoperability-framework"],
+        "categories_id":["13"],
+        "term_taxonomy_id":["13"],
+
+
+-->
