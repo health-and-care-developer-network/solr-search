@@ -35,7 +35,6 @@ Takes about half an hour on localhost
 
 Now, push the indexed data into Solr:
 
-bin/nutch solrindex http://localhost:8983/solr/mycore crawl/crawldb/ -linkdb crawl/linkdb/ crawl/segments/* -filter -normalize -deleteGone
 bin/nutch solrindex http://localhost:8983/solr/developernetwork crawl/crawldb/ -linkdb crawl/linkdb/ crawl/segments/* -filter -normalize -deleteGone
 
 

@@ -11,6 +11,7 @@
         <field name="categories_slug_str" />
     </fields>
     <documents>
+	<!-- FHIR Server pages -->
         <document url="^http://localhost:8080/.*" engine="css">
             <extract-to field="post_title">
                 <text>
@@ -41,30 +42,100 @@
 		<constant value="fhir" />
             </extract-to>
         </document>
+	<!-- Jekyll Generated pages -->
+	<document url="^http://localhost:8081/.*" engine="css">
+            <extract-to field="post_title">
+                <text>
+                    <expr value="head > title" />
+                </text>
+            </extract-to>
+            <extract-to field="post_content">
+                <text>
+                    <expr value="div.post-content" />
+                </text>
+            </extract-to>
+            <extract-to field="solr_id">
+                <url/>
+            </extract-to>
+            <extract-to field="permalink">
+                <url/>
+            </extract-to>
+            <extract-to field="post_type">
+		<constant value="APISpec" />
+            </extract-to>
+            <extract-to field="categories">
+		<constant value="API Specifications" />
+            </extract-to>
+            <extract-to field="categories_str">
+		<constant value="API Specifications" />
+            </extract-to>
+            <extract-to field="categories_slug_str">
+		<constant value="apispec" />
+            </extract-to>
+        </document>
+	<!-- ITK Specs pages -->
+        <document url="^http://localhost:8082/architecture/itk.*" engine="css">
+            <extract-to field="post_title">
+                <text>
+                    <expr value="head > title" />
+                </text>
+            </extract-to>
+            <extract-to field="post_content">
+		<text>
+		    <expr value="div#content" />
+                </text>
+            </extract-to>
+            <extract-to field="solr_id">
+                <url/>
+            </extract-to>
+            <extract-to field="permalink">
+                <url/>
+            </extract-to>
+            <extract-to field="post_type">
+		<constant value="APISpec" />
+            </extract-to>
+            <extract-to field="categories">
+		<constant value="API Specifications" />
+            </extract-to>
+            <extract-to field="categories_str">
+		<constant value="API Specifications" />
+            </extract-to>
+            <extract-to field="categories_slug_str">
+		<constant value="apispec" />
+            </extract-to>
+        </document>
+	<!-- DMSs -->
+        <document url="^http://localhost:8082/.*" engine="css">
+            <extract-to field="post_title">
+                <text>
+                    <expr value="head > title" />
+                </text>
+            </extract-to>
+            <extract-to field="post_content">
+		<text>
+		    <expr value="div#segment-content" />
+                </text>
+            </extract-to>
+            <extract-to field="solr_id">
+                <url/>
+            </extract-to>
+            <extract-to field="permalink">
+                <url/>
+            </extract-to>
+            <extract-to field="post_type">
+		<constant value="APISpec" />
+            </extract-to>
+            <extract-to field="categories">
+		<constant value="API Specifications" />
+            </extract-to>
+            <extract-to field="categories_str">
+		<constant value="API Specifications" />
+            </extract-to>
+            <extract-to field="categories_slug_str">
+		<constant value="apispec" />
+            </extract-to>
+        </document>
     </documents>
+
 </config>
 
-
-<!--
-
-
-        <field name="_version_" type="long" indexed="true" stored="true" multiValued="false"/>	
-      <field name="solr_id" type="string" indexed="true" stored="true" required="true" /> 
-      <field name="ID" type="string" indexed="true" stored="true" required="true" />
-        <field name="post_author" type="string" indexed="true" stored="true"/>
-        <field name="post_name" type="string" indexed="true" stored="true"/>  
-        <field name="post_type" type="string" indexed="true" stored="true"/>
-        <field name="post_title" type="text_lws" indexed="true" stored="true"/>
-        <field name="post_date" type="date" indexed="true" stored="true"/>
-        <field name="post_date_gmt" type="date" indexed="true" stored="true"/>
-        <field name="post_content" type="text" indexed="true" stored="true"/>
-
-
-"categories":["Interoperability and Integration^^NHS Interoperability Framework^^"],
-        "categories_str":["NHS Interoperability Framework"],
-        "categories_slug_str":["nhs-interoperability-framework"],
-        "categories_id":["13"],
-        "term_taxonomy_id":["13"],
-
-
--->
