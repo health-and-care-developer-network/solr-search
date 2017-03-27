@@ -41,7 +41,6 @@ docker $TARGET_PREFIX run --name $CONTAINER_NAME \
 	-c $CPUFLAG \
 	-v $VOLUME_PATH:/root/nutch/crawl \
 	--link solr-developernetwork:solr-developernetwork \
-	-i -t \
 	$SOURCE_URL \
 #	--net=host \
 # 	--userns=host \
