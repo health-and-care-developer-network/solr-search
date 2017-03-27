@@ -3,7 +3,7 @@
 # Usage:
 # build.sh volumepath registryhostname targethostname
 
-VOLUME_PATH=${1:-/docker-data/solr-index-data}
+VOLUME_PATH=${1:-/docker-data/devnetwork-solr-index}
 REGISTRY_HOST=$2
 TARGET_HOST=$3
 
