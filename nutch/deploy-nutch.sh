@@ -37,8 +37,6 @@ echo "Pull and run Nutch"
 docker $TARGET_PREFIX stop $CONTAINER_NAME
 docker $TARGET_PREFIX rm $CONTAINER_NAME
 docker $TARGET_PREFIX run --name $CONTAINER_NAME \
-        -m $MEMORYFLAG \
-	-c $CPUFLAG \
 	-v $VOLUME_PATH:/root/nutch/crawl \
 	--link solr-developernetwork:solr-developernetwork \
 	$SOURCE_URL \
