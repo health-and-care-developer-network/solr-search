@@ -5,6 +5,7 @@
 
 REGISTRY_HOST=$1
 TARGET_HOST=$2
+VOLUME_PATH=${3:-/docker-data/devnetwork-nutch-temp}
 
 CONTAINER_NAME=${CONTAINER_NAME:-nutchcontainer}
 IMAGE=${IMAGE:-"nhsd-nutch"}
@@ -36,12 +37,17 @@ echo "Pull and run Nutch"
 docker $TARGET_PREFIX stop $CONTAINER_NAME
 docker $TARGET_PREFIX rm $CONTAINER_NAME
 docker $TARGET_PREFIX run --name $CONTAINER_NAME \
-	--restart=on-failure:5 \
         -m $MEMORYFLAG \
 	-c $CPUFLAG \
-	--userns=host --net=host \
+	-v $VOLUME_PATH:/root/nutch/crawl \
+	--link solr-developernetwork:solr-developernetwork \
 	-i -t \
-	-d $SOURCE_URL \
-	/bin/bash
+	$SOURCE_URL \
+#	--net=host \
+# 	--userns=host \
+#	-v $VOLUME_PATH:/root/nutch/crawl \
+#	-d \
+#	$SOURCE_URL \
+#	/bin/bash
 
 

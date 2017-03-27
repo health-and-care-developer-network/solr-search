@@ -5,6 +5,16 @@ RUN mkdir -p /root/nutch/plugins/extractor/
 
 COPY files/extractor /root/nutch/plugins/extractor/
 COPY files/conf /root/nutch/conf/
-COPY files/urls /root/nutch/urls/
 
+ARG ENVIRONMENT=develop
+RUN echo "Copying config for environment: $ENVIRONMENT"
 
+# Copy environment-specific files
+COPY files/conf-$ENVIRONMENT/extractors.xml /root/nutch/conf/
+COPY files/conf-$ENVIRONMENT/regex-urlfilter.txt /root/nutch/conf/
+COPY files/conf-$ENVIRONMENT/seed.txt /root/nutch/urls/
+
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]

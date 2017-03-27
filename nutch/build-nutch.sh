@@ -1,9 +1,10 @@
 #!/bin/bash
 
 # Usage:
-# build.sh registryhostname
+# build.sh registryhostname environment
 
 REGISTRY_HOST=$1
+ENVIRONMENT=${2:-develop}
 IMAGE_NAME=nhsd-nutch
 REGISTRY_URL=$REGISTRY_HOST:5000
 
@@ -16,7 +17,7 @@ fi
 
 # Build the solr image
 set -e # Stop on error
-docker $REGISTRY_PREFIX build -t $IMAGE_NAME .
+docker $REGISTRY_PREFIX build -t $IMAGE_NAME --build-arg ENVIRONMENT=$ENVIRONMENT .
 
 # Push to registry
 if [ ! -z $REGISTRY_HOST ]
