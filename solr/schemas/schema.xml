@@ -120,6 +120,7 @@
         <field name="content" type="string" indexed="false" stored="false"/>
         <field name="title" type="string" indexed="false" stored="false"/>
         <field name="boost" type="string" indexed="false" stored="false"/>
+	<field name="anchor" type="string" indexed="false" stored="false"/>
 
         
         <field name="numcomments" type="integer" indexed="true" stored="true"/>
