@@ -12,7 +12,7 @@
     </fields>
     <documents>
 	<!-- FHIR Server pages -->
-        <document url="^http://localhost:8080/.*" engine="css">
+        <document url="^http://172.17.0.1:8080/.*" engine="css">
             <extract-to field="post_title">
                 <text>
                     <expr value="h2.resourceType" />
@@ -43,7 +43,7 @@
             </extract-to>
         </document>
 	<!-- Jekyll Generated pages -->
-	<document url="^http://localhost:8081/.*" engine="css">
+	<document url="^http://172.17.0.1:8081/.*" engine="css">
             <extract-to field="post_title">
                 <text>
                     <expr value="head > title" />
@@ -74,7 +74,7 @@
             </extract-to>
         </document>
 	<!-- ITK Specs pages -->
-        <document url="^http://localhost:8082/architecture/itk.*" engine="css">
+        <document url="^http://172.17.0.1:8082/architecture/itk.*" engine="css">
             <extract-to field="post_title">
                 <text>
                     <expr value="head > title" />
@@ -105,7 +105,7 @@
             </extract-to>
         </document>
 	<!-- DMSs -->
-        <document url="^http://localhost:8082/.*" engine="css">
+        <document url="^http://172.17.0.1:8082/.*" engine="css">
             <extract-to field="post_title">
                 <text>
                     <expr value="head > title" />

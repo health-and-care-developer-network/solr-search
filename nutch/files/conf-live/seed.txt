@@ -13,7 +13,5 @@ https://data.developer.nhs.uk/fhir/fgm-v2-draft-d/Chapter.1.About/index.html
 https://data.developer.nhs.uk/fhir/nrls-v1-draft-a/Chapter.1.About/index.html
 https://data.developer.nhs.uk/fhir/sc-fhir/sc-fhir-1-0-RC4/Chapter.1.About/index.html
 https://data.developer.nhs.uk/fhir/sh/StructuredHeadings-1-0-RC4/
-https://data.developer.nhs.uk/dms/mim/4.2.00/Index.htm
-https://data.developer.nhs.uk/dms/mim/6.3.01/Index.htm
 https://data.developer.nhs.uk/architecture/itk/
 
