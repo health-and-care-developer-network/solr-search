@@ -38,5 +38,6 @@
 # Accept our URLs
 +^https://fhir.nhs.uk.*
 +^https://developer.nhs.uk/apis/.*
-+^https://data.developer.nhs.uk.*
++^https://data.developer.nhs.uk/fhir.*
++^https://data.developer.nhs.uk/architecture.*
 
