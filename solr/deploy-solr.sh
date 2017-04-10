@@ -33,9 +33,8 @@ else
   # Registry specified, so use it
   REGISTRY_PREFIX="--tlsverify -H $REGISTRY_HOST:2376"
   SOURCE_URL=$REGISTRY_HOST:5000/$IMAGE
-
-  echo "Ensure the image is in our registry, and if not add it"
-  ./populateImageIntoRegistry.sh $IMAGE $REGISTRY_HOST
+  # Pull the latest image
+  docker $TARGET_PREFIX pull $SOURCE_URL
 fi
 
 MEMORYFLAG=750m

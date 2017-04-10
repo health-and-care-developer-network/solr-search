@@ -14,4 +14,5 @@ https://data.developer.nhs.uk/fhir/nrls-v1-draft-a/Chapter.1.About/index.html
 https://data.developer.nhs.uk/fhir/sc-fhir/sc-fhir-1-0-RC4/Chapter.1.About/index.html
 https://data.developer.nhs.uk/fhir/sh/StructuredHeadings-1-0-RC4/
 https://data.developer.nhs.uk/architecture/itk/
+https://data.developer.nhs.uk/specifications/NHS-CDA-eDischarge/
 

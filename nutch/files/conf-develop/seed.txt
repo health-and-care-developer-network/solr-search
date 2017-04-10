@@ -14,4 +14,5 @@ http://172.17.0.1:8082/fhir/nrls-v1-draft-a/Chapter.1.About/index.html
 http://172.17.0.1:8082/fhir/sc-fhir/sc-fhir-1-0-RC4/Chapter.1.About/index.html
 http://172.17.0.1:8082/fhir/sh/StructuredHeadings-1-0-RC4/
 http://172.17.0.1:8082/architecture/itk/
+http://172.17.0.1:8082/specifications/NHS-CDA-eDischarge/
 

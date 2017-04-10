@@ -41,5 +41,6 @@
 +^https://fhir-test.nhs.uk.*
 +^https://developer-test.nhs.uk/apis/.*
 +^https://data.developer-test.nhs.uk/fhir.*
++^https://data.developer-test.nhs.uk/specifications.*
 +^https://data.developer-test.nhs.uk/architecture.*
 
