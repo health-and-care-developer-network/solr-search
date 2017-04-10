@@ -24,6 +24,8 @@
 
   <!--  by default if the mimeType is set to *, or 
         if it can't be determined, use parse-tika -->
+
+	<!--
 	<mimeType name="*">
 	  <plugin id="parse-tika" />
 	</mimeType>
@@ -34,12 +36,10 @@
 	</mimeType>
 
 	<mimeType name="application/x-bzip2">
-		<!--  try and parse it with the zip parser -->
 		<plugin id="parse-zip" />
 	</mimeType>
 
 	<mimeType name="application/x-gzip">
-		<!--  try and parse it with the zip parser -->
 		<plugin id="parse-zip" />
 	</mimeType>
 
@@ -54,9 +54,8 @@
 	<mimeType name="application/zip">
 		<plugin id="parse-zip" />
 	</mimeType>
-
+  -->
 	<mimeType name="text/html">
-		<!--<plugin id="extractor" />-->
 		<plugin id="parse-html" />
 	</mimeType>
 
@@ -64,10 +63,10 @@
 		<plugin id="parse-html" />
 	</mimeType>
 
-	<mimeType name="text/xml">
+<!--	<mimeType name="text/xml">
 		<plugin id="parse-tika" />
 		<plugin id="feed" />
-	</mimeType>
+	</mimeType>-->
 
        <!-- Types for parse-ext plugin: required for unit tests to pass. -->
 

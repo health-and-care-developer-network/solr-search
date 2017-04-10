@@ -27,3 +27,32 @@ Normally you can see the error in:
 /root/nutch/logs/hadoop.log
 ```
 
+
+On the server, if you want to start a new interactive nutch session (for example to interrogare the crawl database), type:
+
+```
+docker run -it --name nutchcontainer-interactive --link solr-developernetwork:solr-developernetwork -v /docker-data/devnetwork-nutch-temp:/root/nutch/crawl --entrypoint /bin/bash dn-p-mgmt01:5000/nhsd-nutch
+```
+
+Now, list the segments:
+
+```
+ls -lrt crawl/segments
+```
+
+Now, for each segment, dump all the metadata and check for entries with no solr_id field:
+
+```
+for file in crawl/segments/*
+do
+  bin/nutch readseg -dump $file segmentAllContent
+  echo "--------------------------------------------------------------------"
+  echo "Entries in segment:"
+  grep "Parse Metadata" segmentAllContent/dump | wc -l
+  echo "Entries without a solr_id:"
+  grep "Parse Metadata" segmentAllContent/dump | grep -v solr_id
+  echo "--------------------------------------------------------------------"
+done
+```
+
+
