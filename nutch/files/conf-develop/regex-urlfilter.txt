@@ -41,5 +41,6 @@
 # Accept our URLs
 +^http://172.17.0.1:8080.*
 +^http://172.17.0.1:8081.*
-+^https://172.17.0.1:8082/fhir.*
-+^https://172.17.0.1:8082/architecture.*
++^http://172.17.0.1:8082/fhir.*
++^http://172.17.0.1:8082/architecture.*
+
