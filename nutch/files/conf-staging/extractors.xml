@@ -135,6 +135,37 @@
 		<constant value="apispec" />
             </extract-to>
         </document>
+	<!-- Default -->
+        <document url=".*" engine="css">
+            <extract-to field="post_title">
+                <text>
+                    <expr value="head > title" />
+                </text>
+            </extract-to>
+            <extract-to field="post_content">
+		<text>
+		    <expr value="body" />
+                </text>
+            </extract-to>
+            <extract-to field="solr_id">
+                <url/>
+            </extract-to>
+            <extract-to field="permalink">
+                <url/>
+            </extract-to>
+            <extract-to field="post_type">
+		<constant value="APISpec" />
+            </extract-to>
+            <extract-to field="categories">
+		<constant value="API Specifications" />
+            </extract-to>
+            <extract-to field="categories_str">
+		<constant value="API Specifications" />
+            </extract-to>
+            <extract-to field="categories_slug_str">
+		<constant value="apispec" />
+            </extract-to>
+        </document>
     </documents>
 </config>
 
