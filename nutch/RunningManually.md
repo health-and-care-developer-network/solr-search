@@ -54,4 +54,9 @@ done
 echo "--------------------------------------------------------------------"
 ```
 
+To delete all entries in the index:
+
+```
+curl http://solr-developernetwork:8983/solr/developernetwork/update?commit=true -d '<delete><query>*:*</query></delete>'
+```
 
