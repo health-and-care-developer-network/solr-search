@@ -43,16 +43,15 @@ ls -lrt crawl/segments
 Now, for each segment, dump all the metadata and check for entries with no solr_id field:
 
 ```
+echo "--------------------------------------------------------------------"
 for file in crawl/segments/*
 do
-  bin/nutch readseg -dump $file segmentAllContent
-  echo "--------------------------------------------------------------------"
-  echo "Entries in segment:"
-  grep "Parse Metadata" segmentAllContent/dump | wc -l
-  echo "Entries without a solr_id:"
-  grep "Parse Metadata" segmentAllContent/dump | grep -v solr_id
-  echo "--------------------------------------------------------------------"
+  bin/nutch readseg -dump $file segmentAllContent 1>/dev/null
+  entries_with_solr_id=`grep "Parse Metadata" segmentAllContent/dump | grep solr_id | wc -l`
+  entries_without_solr_id=`grep "Parse Metadata" segmentAllContent/dump | grep -v solr_id | wc -l`
+  echo "Entries in segment - with a solr_id: $entries_with_solr_id , without a solr_id: $entries_without_solr_id"
 done
+echo "--------------------------------------------------------------------"
 ```
 
 

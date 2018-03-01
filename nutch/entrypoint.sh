@@ -17,7 +17,7 @@ bin/nutch inject crawl/crawldb urls
 bin/nutch generate crawl/crawldb crawl/segments
 s1=`ls -d crawl/segments/2* | tail -1`
 bin/nutch fetch $s1
-bin/nutch fetch $s1
+bin/nutch parse $s1
 bin/nutch updatedb crawl/crawldb $s1
 
 # Pass 2
@@ -38,6 +38,21 @@ bin/nutch updatedb crawl/crawldb $s3
 bin/nutch invertlinks crawl/linkdb -dir crawl/segments
 
 # Dedup not working....
+
+# Output some diagnostic details to help find errors with parsing the pages
+echo "--------------------------------------------------------------------"
+for file in crawl/segments/*
+do
+  bin/nutch readseg -dump $file segmentAllContent 1>/dev/null
+  entries_with_solr_id=`grep "Parse Metadata" segmentAllContent/dump | grep solr_id | wc -l`
+  entries_without_solr_id=`grep "Parse Metadata" segmentAllContent/dump | grep -v solr_id | wc -l`
+  echo "Entries in segment - with a solr_id: $entries_with_solr_id , without a solr_id: $entries_without_solr_id"
+done
+echo "--------------------------------------------------------------------"
+
+# Output some general stats
+bin/nutch domainstats crawl/crawldb/ stats host
+cat stats/*
 
 # Send to SOLR
 bin/nutch solrindex http://solr-developernetwork:8983/solr/developernetwork crawl/crawldb/ -linkdb crawl/linkdb/ crawl/segments/* -filter -normalize -deleteGone
