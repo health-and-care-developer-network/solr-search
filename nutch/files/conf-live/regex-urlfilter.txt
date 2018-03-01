@@ -43,4 +43,6 @@
 +^https://data.developer.nhs.uk/fhir.*
 +^https://data.developer.nhs.uk/specifications.*
 +^https://data.developer.nhs.uk/architecture.*
++^https://data.developer.nhs.uk/dms.*
+
 

@@ -10,7 +10,7 @@ To start the crawl type:
 
 ```
 cd /root/nutch
-bin/crawl ./urls ./crawl 1
+bin/crawl -s ./urls ./crawl 1
 ```
 
 Note: This does a single crawl rather than 5, so is a lot quicker!
