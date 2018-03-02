@@ -12,7 +12,7 @@
     </fields>
     <documents>
 	<!-- FHIR Server pages -->
-        <document url="^https://fhir.nhs.uk.*" engine="css">
+        <document url="^https:\/\/fhir\.nhs\.uk.*" engine="css">
             <extract-to field="post_title">
                 <text>
                     <expr value="h2.resourceType" />
@@ -20,14 +20,20 @@
             </extract-to>
             <extract-to field="post_content">
                 <text>
-                    <expr value="li#description" />
+                    <expr value="span.fhir-data-value" />
                 </text>
             </extract-to>
             <extract-to field="solr_id">
-                <url/>
+                <!-- For some reason, nutch is adding a duff port number into the URL, so remove it -->
+		<replace pattern="^(http[s]?:\/\/[a-zA-Z0-9\.\-]*)(:\-1)(\/.*)" substitution="$1$3">
+			<url />
+		</replace>
             </extract-to>
             <extract-to field="permalink">
-                <url/>
+                <!-- For some reason, nutch is adding a duff port number into the URL, so remove it -->
+		<replace pattern="^(http[s]?:\/\/[a-zA-Z0-9\.\-]*)(:\-1)(\/.*)" substitution="$1$3">
+			<url />
+		</replace>
             </extract-to>
             <extract-to field="post_type">
 		<constant value="fhir" />
@@ -43,7 +49,7 @@
             </extract-to>
         </document>
 	<!-- Jekyll Generated pages -->
-	<document url="^https://developer.nhs.uk/apis/.*" engine="css">
+	<document url="^https:\/\/developer\.nhs\.uk[:]?[0-9\-]*\/apis\/.*" engine="css">
             <extract-to field="post_title">
                 <text>
                     <expr value="head > title" />
@@ -55,10 +61,16 @@
                 </text>
             </extract-to>
             <extract-to field="solr_id">
-                <url/>
+                <!-- For some reason, nutch is adding a duff port number into the URL, so remove it -->
+		<replace pattern="^(http[s]?:\/\/[a-zA-Z0-9\.\-]*)(:\-1)(\/.*)" substitution="$1$3">
+			<url />
+		</replace>
             </extract-to>
             <extract-to field="permalink">
-                <url/>
+                <!-- For some reason, nutch is adding a duff port number into the URL, so remove it -->
+		<replace pattern="^(http[s]?:\/\/[a-zA-Z0-9\.\-]*)(:\-1)(\/.*)" substitution="$1$3">
+			<url />
+		</replace>
             </extract-to>
             <extract-to field="post_type">
 		<constant value="APISpec" />
@@ -74,7 +86,7 @@
             </extract-to>
         </document>
 	<!-- ITK Specs pages -->
-        <document url="^https://data.developer.nhs.uk/architecture/itk.*" engine="css">
+        <document url="^https:\/\/data\.developer\.nhs\.uk[:]?[0-9\-]*\/architecture\/itk.*" engine="css">
             <extract-to field="post_title">
                 <text>
                     <expr value="head > title" />
@@ -86,10 +98,16 @@
                 </text>
             </extract-to>
             <extract-to field="solr_id">
-                <url/>
+                <!-- For some reason, nutch is adding a duff port number into the URL, so remove it -->
+		<replace pattern="^(http[s]?:\/\/[a-zA-Z0-9\.\-]*)(:\-1)(\/.*)" substitution="$1$3">
+			<url />
+		</replace>
             </extract-to>
             <extract-to field="permalink">
-                <url/>
+                <!-- For some reason, nutch is adding a duff port number into the URL, so remove it -->
+		<replace pattern="^(http[s]?:\/\/[a-zA-Z0-9\.\-]*)(:\-1)(\/.*)" substitution="$1$3">
+			<url />
+		</replace>
             </extract-to>
             <extract-to field="post_type">
 		<constant value="APISpec" />
@@ -105,7 +123,7 @@
             </extract-to>
         </document>
 	<!-- DMSs -->
-        <document url="^https://data.developer.nhs.uk/.*" engine="css">
+        <document url="^https:\/\/data\.developer\.nhs\.uk[:]?[0-9\-]*\/.*" engine="css">
             <extract-to field="post_title">
                 <text>
                     <expr value="head > title" />
@@ -117,10 +135,53 @@
                 </text>
             </extract-to>
             <extract-to field="solr_id">
-                <url/>
+                <!-- For some reason, nutch is adding a duff port number into the URL, so remove it -->
+		<replace pattern="^(http[s]?:\/\/[a-zA-Z0-9\.\-]*)(:\-1)(\/.*)" substitution="$1$3">
+			<url />
+		</replace>
             </extract-to>
             <extract-to field="permalink">
-                <url/>
+                <!-- For some reason, nutch is adding a duff port number into the URL, so remove it -->
+		<replace pattern="^(http[s]?:\/\/[a-zA-Z0-9\.\-]*)(:\-1)(\/.*)" substitution="$1$3">
+			<url />
+		</replace>
+            </extract-to>
+            <extract-to field="post_type">
+		<constant value="APISpec" />
+            </extract-to>
+            <extract-to field="categories">
+		<constant value="API Specifications" />
+            </extract-to>
+            <extract-to field="categories_str">
+		<constant value="API Specifications" />
+            </extract-to>
+            <extract-to field="categories_slug_str">
+		<constant value="apispec" />
+            </extract-to>
+        </document>
+	<!-- Default -->
+        <document url=".*" engine="css">
+            <extract-to field="post_title">
+                <text>
+                    <expr value="head > title" />
+                </text>
+            </extract-to>
+            <extract-to field="post_content">
+		<text>
+		    <expr value="body" />
+                </text>
+            </extract-to>
+            <extract-to field="solr_id">
+                <!-- For some reason, nutch is adding a duff port number into the URL, so remove it -->
+		<replace pattern="^(http[s]?:\/\/[a-zA-Z0-9\.\-]*)(:\-1)(\/.*)" substitution="$1$3">
+			<url />
+		</replace>
+            </extract-to>
+            <extract-to field="permalink">
+		<!-- For some reason, nutch is adding a duff port number into the URL, so remove it -->
+		<replace pattern="^(http[s]?:\/\/[a-zA-Z0-9\.\-]*)(:\-1)(\/.*)" substitution="$1$3">
+			<url />
+		</replace>
             </extract-to>
             <extract-to field="post_type">
 		<constant value="APISpec" />

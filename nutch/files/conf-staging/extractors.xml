@@ -20,7 +20,7 @@
             </extract-to>
             <extract-to field="post_content">
                 <text>
-                    <expr value="li#description" />
+                    <expr value="span.fhir-data-value" />
                 </text>
             </extract-to>
             <extract-to field="solr_id">
