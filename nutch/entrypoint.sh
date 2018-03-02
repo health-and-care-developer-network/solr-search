@@ -7,6 +7,10 @@ cd /root/nutch
 # Run the script to inject API hub URLs into the seed file
 /root/nutch/generate-seeds.sh
 
+echo " == Using seeds URLS:"
+cat /root/nutch/urls/seed.txt
+echo " == "
+
 # Previously we used the crawl script provided, but the dedup step now seems to fail.. so we'll run the individual steps manually instead.
 #bin/crawl -s ./urls ./crawl 5
 #bin/nutch solrindex http://solr-developernetwork:8983/solr/developernetwork crawl/crawldb/ -linkdb crawl/linkdb/ crawl/segments/* -filter -normalize -deleteGone
