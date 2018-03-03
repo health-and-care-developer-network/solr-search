@@ -15,13 +15,16 @@
         <document url="^https:\/\/fhir\.nhs\.uk.*" engine="css">
             <extract-to field="post_title">
                 <text>
-                    <expr value="h2.resourceType" />
+                    <expr value=".breadcrumb_last" />
                 </text>
             </extract-to>
             <extract-to field="post_content">
-                <text>
-                    <expr value="span.fhir-data-value" />
-                </text>
+		<concat delimiter=" ">
+		        <constant value="FHIR Resource definition:" />
+			<text>
+			    <expr value=".breadcrumb_last" />
+		        </text>
+		</concat>
             </extract-to>
             <extract-to field="solr_id">
                 <!-- For some reason, nutch is adding a duff port number into the URL, so remove it -->
