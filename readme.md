@@ -26,6 +26,24 @@ cd solr
 You should now be able to see the Solr console at: http://localhost:8983/
 
 
+### Updating the Solr Index from Wordpress ###
+
+Once you've got Solr installed, and also the Solr Power plugin for Wordpress (the customised fork for the Developer Network), you'll need to index all the pages. Doing this from the Wordpress dashboard page is likely to timeout and fail, so you'll need to install wp-cli.
+
+To do this, add the WP-CLI extension in the Azure web application, then open the kudu console:
+
+https://[SITE-NAME].scm.azurewebsites.net/DebugConsole
+
+Navigate to the folder: ```Site Extensions > WPCLIExtension > Commands```
+
+Now, type:
+
+```
+wp solr index --path=D:\home\site\wwwroot
+```
+
+You should only have to do this once, after that the plugin will update the index whenever pages are added, updated or removed.
+
 ## Nutch ##
 Nutch is a web crawler which crawls any URLs and generates some metadata about them to add into the Solr index. This allows the developer network search to incorporate all the content from these containers alongside the wordpress content.
 
