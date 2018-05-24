@@ -1,11 +1,12 @@
 #!/bin/bash
 
 # Usage:
-# build.sh registryhostname environment
+# build.sh registryhostname environment tag
 
 REGISTRY_HOST=$1
 ENVIRONMENT=${2:-develop}
-IMAGE_NAME=nhsd-nutch
+TAG=${3:-develop}
+IMAGE_NAME=nhsd-nutch:$TAG
 REGISTRY_URL=$REGISTRY_HOST:5000
 
 if [ -z $REGISTRY_HOST ]

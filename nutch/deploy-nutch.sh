@@ -1,14 +1,14 @@
 #!/bin/bash
 
 # Usage:
-# build.sh registryhostname targethostname
+# build.sh registryhostname targethostname volumepath tagname
 
 REGISTRY_HOST=$1
 TARGET_HOST=$2
 VOLUME_PATH=${3:-/docker-data/devnetwork-nutch-temp}
-
+TAG=${4:-develop}
 CONTAINER_NAME=${CONTAINER_NAME:-nutchcontainer}
-IMAGE=${IMAGE:-"nhsd-nutch"}
+IMAGE=${IMAGE:-"nhsd-nutch"}:$TAG
 CORE_NAME=${CORE_NAME:-developernetwork}
 
 if [ -z $TARGET_HOST ]
