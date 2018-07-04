@@ -17,6 +17,9 @@ echo " == "
 
 bin/nutch inject crawl/crawldb urls
 
+# Delete old crawl segments older than 5 days
+find crawl/segments -mtime +5 -type d -maxdepth 1 -exec rm -r "{}" \;
+
 # Pass 1
 bin/nutch generate crawl/crawldb crawl/segments
 s1=`ls -d crawl/segments/2* | tail -1`
